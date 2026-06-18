@@ -26,6 +26,7 @@
 #include "shim_debug.h"
 #include "shim_loader.h"
 #include "shim_output.h"
+#include "shim_frontend.h"
 
 // Pointers to J2534 API functions in the loaded library
 PTOPEN _PassThruOpen = 0;
@@ -279,6 +280,9 @@ bool shim_checkAndAutoload(void)
 		// The user specified a debug output file in the dialog. Write any buffered text to this file
 		// and start using it from now on
 		shim_writeLogfile(Dlg.GetDebugFilename(), true);
+
+		// Set the minimum timeout length specified by the user
+		shim_setMinimumTimeout(Dlg.GetTimeout());
 
 		return true;
 	}

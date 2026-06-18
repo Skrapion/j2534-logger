@@ -47,3 +47,6 @@ extern "C"
 }
 
 long shim_PassThruGetLastError(char *pErrorDescription);
+
+// Set a minimum timeout value for PassThruReadMsgs and PassthruWriteMsgs
+void shim_setMinimumTimeout(unsigned int Timeout);

@@ -21,6 +21,7 @@ IMPLEMENT_DYNAMIC(CSelectionBox, CDialog)
 
 CSelectionBox::CSelectionBox(std::set<cPassThruInfo>& connectedList, CWnd* pParent /*=NULL*/)
 	: CDialog(CSelectionBox::IDD, pParent), connectedList(connectedList), sel(NULL)
+	, m_nTimeout(0)
 {
 
 }
@@ -37,6 +38,7 @@ void CSelectionBox::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_J2534REGINFO, m_detailtext);
 	DDX_Control(pDX, IDC_BUTTON1, m_button_config);
 	DDX_Control(pDX, IDC_EDIT1, m_logfilename);
+	DDX_Text(pDX, IDC_EDIT_TIMEOUT, m_nTimeout);
 }
 
 
@@ -46,6 +48,7 @@ BEGIN_MESSAGE_MAP(CSelectionBox, CDialog)
 	ON_NOTIFY(HDN_ITEMDBLCLICK, 0, &CSelectionBox::OnHdnItemdblclickList1)
 	ON_BN_CLICKED(IDC_BUTTON1, &CSelectionBox::OnBnClickedConfig)
 	ON_BN_CLICKED(IDC_BUTTON2, &CSelectionBox::OnBnClickedBrowse)
+	ON_STN_CLICKED(IDC_J2534REGINFO, &CSelectionBox::OnStnClickedJ2534reginfo)
 END_MESSAGE_MAP()
 
 // SelectionBox message handlers
@@ -243,4 +246,14 @@ cPassThruInfo * CSelectionBox::GetSelectedPassThru()
 CString CSelectionBox::GetDebugFilename()
 {
 	return cstrDebugFile;
+}
+
+unsigned int CSelectionBox::GetTimeout() const
+{
+	return m_nTimeout;
+}
+
+void CSelectionBox::OnStnClickedJ2534reginfo()
+{
+	// TODO: Add your control notification handler code here
 }

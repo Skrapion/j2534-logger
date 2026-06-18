@@ -49,6 +49,8 @@
 	} \
 }
 
+unsigned int g_Timeout = 0;
+
 extern "C" long J2534_API PassThruLoadLibrary(const char * szFunctionLibrary)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
@@ -211,6 +213,8 @@ extern "C" long J2534_API PassThruReadMsgs(unsigned long ChannelID, PASSTHRU_MSG
 	long retval;
 	unsigned long reqNumMsgs;
 
+	Timeout = max(Timeout, g_Timeout);
+
 	shim_clearInternalError();
 	dtDebug(_T("%.3fs << PTReadMsgs(%ld, 0x%08X, 0x%08X, %ld)\n"), GetTimeSinceInit(), ChannelID, pMsg, pNumMsgs, Timeout);
 	SHIM_CHECK_DLL();
@@ -233,6 +237,8 @@ extern "C" long J2534_API PassThruWriteMsgs(unsigned long ChannelID, PASSTHRU_MS
 	auto_lock lock;
 	long retval;
 	unsigned long reqNumMsgs = *pNumMsgs;
+
+	Timeout = max(Timeout, g_Timeout);
 
 	shim_clearInternalError();
 	dtDebug(_T("%.3fs >> PTWriteMsgs(%ld, 0x%08X, 0x%08X, %ld)\n"), GetTimeSinceInit(), ChannelID, pMsg, pNumMsgs, Timeout);
@@ -518,4 +524,9 @@ extern "C" long J2534_API PassThruIoctl(unsigned long ChannelID, unsigned long I
 
 	dbug_printretval(retval);
 	return retval;
+}
+
+void shim_setMinimumTimeout(unsigned int Timeout)
+{
+	g_Timeout = Timeout;
 }

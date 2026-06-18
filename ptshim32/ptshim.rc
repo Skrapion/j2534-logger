@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -34,9 +32,6 @@ END
 
 2 TEXTINCLUDE 
 BEGIN
-    "#ifndef APSTUDIO_INVOKED\r\n"
-    "#include ""targetver.h""\r\n"
-    "#endif\r\n"
     "#include ""afxres.h""\r\n"
     "\0"
 END
@@ -104,19 +99,22 @@ END
 // Dialog
 //
 
-IDD_DIALOG1 DIALOGEX 0, 0, 316, 225
+IDD_DIALOG1 DIALOGEX 0, 0, 316, 232
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Select a J2534 interface"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,205,204,50,14,WS_DISABLED
-    PUSHBUTTON      "Cancel",IDCANCEL,259,204,50,14
+    DEFPUSHBUTTON   "OK",IDOK,205,211,50,14,WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,259,211,50,14
     GROUPBOX        "Details",IDC_STATIC,116,7,193,136
-    CONTROL         "",IDC_LIST1,"SysListView32",LVS_LIST | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,102,211
-    LTEXT           "Select J2534 interface then click OK",IDC_J2534REGINFO,125,20,177,118
-    PUSHBUTTON      "Config",IDC_BUTTON1,116,204,50,14,WS_DISABLED
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_LIST | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,102,218
+    LTEXT           "Select J2534 interface then click OK",IDC_J2534REGINFO,123,20,177,118
+    PUSHBUTTON      "Config",IDC_BUTTON1,116,211,50,14,WS_DISABLED
     EDITTEXT        IDC_EDIT1,116,158,136,14,ES_AUTOHSCROLL
     PUSHBUTTON      "Browse",IDC_BUTTON2,259,158,50,14
+    LTEXT           "Minimum timeout override in milliseconds:",IDC_STATIC,122,188,136,8
+    EDITTEXT        IDC_EDIT_TIMEOUT,261,186,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Settings",IDC_STATIC,117,177,192,29
 END
 
 
@@ -126,19 +124,30 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_DIALOG1, DIALOG
     BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 309
         TOPMARGIN, 7
-        BOTTOMMARGIN, 218
+        BOTTOMMARGIN, 225
     END
 END
 #endif    // APSTUDIO_INVOKED
 
-#endif    // English (U.S.) resources
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG1 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

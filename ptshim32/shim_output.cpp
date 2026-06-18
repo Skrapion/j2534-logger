@@ -42,11 +42,11 @@ private:
 	size_t m_iWriteNext;
 	size_t m_iReadNext;
 	LPTSTR m_pBuffer;
-	TCHAR data[1024*128];	// circular buffer for debug log
+	TCHAR data[1024*128] = {0};	// circular buffer for debug log
 };
 
 cFifo logFifo;
-FILE * fp;
+FILE * fp = NULL;
 static bool fInitialized = false;
 static bool fLogToFile = false;
 

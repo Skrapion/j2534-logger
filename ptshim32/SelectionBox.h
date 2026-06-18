@@ -38,6 +38,7 @@ private:
 	CStatic m_detailtext;
 	CButton m_button_ok;
 	CButton m_button_config;
+	unsigned int m_nTimeout;
 
 	void DoPopulateRegistryListbox();
 
@@ -52,4 +53,6 @@ public:
 
 	cPassThruInfo * GetSelectedPassThru();
 	CString GetDebugFilename();
+	unsigned int GetTimeout() const;
+	afx_msg void OnStnClickedJ2534reginfo();
 };
