@@ -19,7 +19,7 @@
 */
 
 
-#include <stdafx.h>
+#include <afxwin.h>
 
 #include <tchar.h>
 #include <windows.h> 
@@ -49,7 +49,7 @@
 	} \
 }
 
-extern "C" long J2534_API PassThruLoadLibrary(char * szFunctionLibrary)
+extern "C" long J2534_API PassThruLoadLibrary(const char * szFunctionLibrary)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -66,7 +66,7 @@ extern "C" long J2534_API PassThruLoadLibrary(char * szFunctionLibrary)
 		return ERR_NULL_PARAMETER;
 	}
 
-	CStringW cstrLibrary(szFunctionLibrary);
+	CString cstrLibrary(szFunctionLibrary);
 	bool fSuccess;
 	fSuccess = shim_loadLibrary(cstrLibrary);
 	if (! fSuccess)
@@ -95,7 +95,7 @@ extern "C" long J2534_API PassThruUnloadLibrary()
 	return STATUS_NOERROR;
 }
 
-extern "C" long J2534_API PassThruWriteToLogA(char *szMsg)
+extern "C" long J2534_API PassThruWriteToLogA(const char *szMsg)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	CStringW cstrMsg(szMsg);
@@ -105,7 +105,7 @@ extern "C" long J2534_API PassThruWriteToLogA(char *szMsg)
 	return STATUS_NOERROR;
 }
 
-extern "C" long J2534_API PassThruWriteToLogW(wchar_t *szMsg)
+extern "C" long J2534_API PassThruWriteToLogW(const wchar_t *szMsg)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
@@ -114,7 +114,7 @@ extern "C" long J2534_API PassThruWriteToLogW(wchar_t *szMsg)
 	return STATUS_NOERROR;
 }
 
-extern "C" long J2534_API PassThruSaveLog(char *szFilename)
+extern "C" long J2534_API PassThruSaveLog(const char *szFilename)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -123,7 +123,7 @@ extern "C" long J2534_API PassThruSaveLog(char *szFilename)
 
 	dtDebug(_T("%.3fs ++ PTSaveLog(%s)\n"), GetTimeSinceInit(), (szFilename==NULL)?_T("*NULL*"):_T("")/*pName*/);
 
-	CStringW cstrFilename(szFilename);
+	CString cstrFilename(szFilename);
 	shim_writeLogfile(cstrFilename, false);
 
 	dbug_printretval(STATUS_NOERROR);

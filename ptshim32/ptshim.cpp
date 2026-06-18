@@ -1,7 +1,7 @@
 // ptshim.cpp : Defines the initialization routines for the DLL.
 //
 
-#include "stdafx.h"
+#include <afxwin.h>
 #include "ptshim.h"
 
 #ifdef _DEBUG

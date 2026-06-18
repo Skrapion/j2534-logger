@@ -39,10 +39,10 @@ extern "C"
 	long J2534_API PassThruGetLastError(char *pErrorDescription);
 	long J2534_API PassThruIoctl(unsigned long ChannelID, unsigned long IoctlID, void *pInput, void *pOutput);
 
-	long J2534_API PassThruLoadLibrary(char *szFunctionLibrary);
-	long J2534_API PassThruWriteToLogA(char *szMsg);
-	long J2534_API PassThruWriteToLogW(wchar_t *szMsg);
-	long J2534_API PassThruSaveLog(char *szFilename);
+	long J2534_API PassThruLoadLibrary(const char *szFunctionLibrary);
+	long J2534_API PassThruWriteToLogA(const char *szMsg);
+	long J2534_API PassThruWriteToLogW(const wchar_t *szMsg);
+	long J2534_API PassThruSaveLog(const char *szFilename);
 	long J2534_API PassThruUnloadLibrary();
 }
 

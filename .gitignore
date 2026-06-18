@@ -1,0 +1,12 @@
+*.vcxproj.user
+*.wixproj.user
+*.suo
+.vs/
+Release/
+installer/bin/
+installer/obj/
+ptshim32/Release/
+ptshim32/Debug/
+shim_example/Release/
+shim_example/Debug/
+

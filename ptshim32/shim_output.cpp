@@ -19,7 +19,7 @@
 */
 
 
-#include <stdafx.h>
+#include <afxwin.h>
 #include <tchar.h>
 #include <varargs.h>
 

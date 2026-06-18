@@ -18,7 +18,7 @@
 **
 */
 
-#include <stdafx.h>
+#include <afxwin.h>
 
 #include <iomanip>
 #include <iostream>
@@ -127,7 +127,7 @@ static LPCTSTR dbug_retval2str(unsigned long RetVal)
 
 tstring dbug_return(unsigned long RetVal)
 {
-	std::basic_ostringstream<wchar_t> ssRetVal;
+	std::basic_ostringstream<tchar> ssRetVal;
 
 	ssRetVal << RetVal << _T(":") << dbug_retval2str(RetVal);
 
@@ -161,7 +161,7 @@ static LPCTSTR dbug_filter2str(unsigned long FilterType)
 
 tstring dbug_filter(unsigned long FilterType)
 {
-	std::basic_ostringstream<wchar_t> ssFilterType;
+	std::basic_ostringstream<tchar> ssFilterType;
 
 	ssFilterType << FilterType << _T(":") << dbug_filter2str(FilterType);
 
@@ -227,7 +227,7 @@ static LPCTSTR dbug_ioctl2str(unsigned long IoctlID)
 
 tstring dbug_ioctl(unsigned long IoctlID)
 {
-	std::basic_ostringstream<wchar_t> ssIoctlID;
+	std::basic_ostringstream<tchar> ssIoctlID;
 
 	ssIoctlID << IoctlID << _T(":") << dbug_ioctl2str(IoctlID);
 
@@ -318,7 +318,7 @@ static LPCTSTR dbug_param2str(unsigned long ParamID)
 
 tstring dbug_param(unsigned long ParamID)
 {
-	std::basic_ostringstream<wchar_t> ssParamID;
+	std::basic_ostringstream<tchar> ssParamID;
 
 	//ssParamID << _T("0x") << std::hex << std::setw(2) << std::setfill(_T('0')) << ParamID << _T(":") << dbug_param2str(ParamID);
 	ssParamID << ParamID << _T(":") << dbug_param2str(ParamID);
@@ -371,7 +371,7 @@ static LPCTSTR dbug_prot2str(unsigned long ProtocolID)
 
 tstring dbug_prot(unsigned long ProtocolID)
 {
-	std::basic_ostringstream<wchar_t> ssProtocolID;
+	std::basic_ostringstream<tchar> ssProtocolID;
 
 	ssProtocolID << ProtocolID << _T(":") << dbug_prot2str(ProtocolID);
 
@@ -406,7 +406,7 @@ static LPCTSTR dbug_cflag2str(unsigned long ConnectFlag)
 
 void dbug_printcflag(unsigned long ConnectFlags)
 {
-	std::basic_ostringstream<wchar_t> ssConnectFlags;
+	std::basic_ostringstream<tchar> ssConnectFlags;
 
 	if (ConnectFlags == 0)
 		return;
@@ -468,7 +468,7 @@ static LPCTSTR dbug_rxstatus2str(unsigned long RxStatus)
 
 void dbug_printrxstatus(unsigned long RxStatus)
 {
-	std::basic_ostringstream<wchar_t> ssRxStatus;
+	std::basic_ostringstream<tchar> ssRxStatus;
 
 	if (RxStatus == 0)
 		return;
@@ -527,7 +527,7 @@ static LPCTSTR dbug_txflag2str(unsigned long TxFlags)
 
 void dbug_printtxflags(unsigned long TxFlags)
 {
-	std::basic_ostringstream<wchar_t> ssTxFlags;
+	std::basic_ostringstream<tchar> ssTxFlags;
 
 	if (TxFlags == 0)
 		return;
@@ -569,7 +569,7 @@ void dbug_printsbyte(SBYTE_ARRAY *inAry, LPCTSTR s)
 
 	if (inAry->NumOfBytes > 0)
 	{
-		std::basic_ostringstream<wchar_t> ssData;
+		std::basic_ostringstream<tchar> ssData;
 
 		ssData << std::hex << std::setfill(_T('0')) << _T("  \\__");
 		for (unsigned long i=0; i < inAry->NumOfBytes; i++)
@@ -664,7 +664,7 @@ void dbug_printmsg(PASSTHRU_MSG mm[], LPCTSTR s, unsigned long numMsgs, bool isW
 		// Display Data[] except for frames containing neither data nor extradata
 		if (mm[i].DataSize > 0)
 		{
-			std::basic_ostringstream<wchar_t> ssData;
+			std::basic_ostringstream<tchar> ssData;
 			unsigned long n = mm[i].ExtraDataIndex;
 
 			ssData << std::hex << std::setfill(_T('0')) << _T("  \\__");

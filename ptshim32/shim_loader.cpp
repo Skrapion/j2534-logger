@@ -19,7 +19,6 @@
 */
 
 
-#include <stdafx.h>
 #include <afxmt.h>
 
 #include "j2534_v0404.h"

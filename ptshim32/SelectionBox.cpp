@@ -1,7 +1,10 @@
 // SelectionBox.cpp : implementation file
 //
 
-#include "stdafx.h"
+#include <afxwin.h>
+#include <ShlObj.h>
+#include <afxdlgs.h>
+
 
 #include <set>
 #include <sstream>
@@ -141,7 +144,7 @@ void CSelectionBox::OnLvnItemchangedList1(NMHDR *pNMHDR, LRESULT *pResult)
 		m_button_config.EnableWindow(fSuccess);
 
 		// Build a string and put in the details box
-		std::basic_ostringstream<wchar_t> desc;
+		std::basic_ostringstream<tchar> desc;
 		desc << _T("Vendor: ") << iPassThruInfo->Vendor << endl;
 		desc << _T("Name: ") << iPassThruInfo->Name << endl;
 		desc << _T("FunctionLibrary: ") << iPassThruInfo->FunctionLibrary << endl;

@@ -31,6 +31,12 @@ typedef std::wstring tstring;
 typedef std::string tstring;
 #endif
 
+#ifdef _UNICODE
+typedef wchar_t tchar;
+#else
+typedef char tchar;
+#endif
+
 class cPassThruInfo
 {
 public:
